@@ -2,7 +2,7 @@ import { FormControl, Input, InputRightElement, Button, InputGroup, Center, Box,
 import Header from "./Header";
 import io from 'socket.io-client';
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { ArrowRightIcon } from "@chakra-ui/icons"
 import axios from "axios";
 
@@ -10,7 +10,7 @@ import axios from "axios";
 const socket = io("http://localhost:5000");
 function Room() {
     const params = useParams()
-    const navigate = useNavigate()
+    const navigate = useRef(useNavigate())
     const [message, setMessage] = useState("");
     const [messages, setMessages] = useState([]);
     const room_id = params.id;
@@ -24,7 +24,7 @@ function Room() {
         axios.get(`http://localhost:5000/rooms/${room_id}/messages`).then(data => {
             setMessages(messages => [...messages, ...data.data.messages])
         })
-    }, [])
+    }, [room_id])
 
     useEffect(() => {
         socket.on("message recieved", (message) => {
