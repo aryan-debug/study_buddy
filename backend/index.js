@@ -15,9 +15,21 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,POST,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type,Authorization,accept');
+    if (req.method === 'OPTIONS') {
+        res.statusCode = 200;
+        return res.end();
+    }
+    else {
+        return next();
+    }
+})
+
 app.use(cors({
     origin: 'https://harmonious-choux-39e014.netlify.app',
-    credentials: true,
 }))
 
 app.get("/", (req, res) => {
