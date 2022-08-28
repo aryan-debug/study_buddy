@@ -42,7 +42,7 @@ function CreateRoomPage() {
                             </FormControl>
                             <FormControl>
                                 <FormLabel>Subject</FormLabel>
-                                <Select value={subject} onChange={e => setSubject(e.target.value)} placeholder="Choose a subject">
+                                <Select value={subject} onChange={e => setSubject(e.target.value)} placeholder="Choose a subject" required>
                                     {
                                         subjects.map((subject, index) => { return <option key={index} value={subject}>{subject}</option> })
                                     }
