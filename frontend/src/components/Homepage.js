@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import RoomCard from './RoomCard';
 
-const socket = io("http://localhost:5000");
+const socket = io("https://study-buddy-hacks.herokuapp.com");
 
 function App() {
   const [rooms, setRooms] = useState([])
@@ -14,7 +14,7 @@ function App() {
   }, [])
   useEffect(() => {
     async function get_rooms() {
-      const fetched_rooms = await axios.get("http://localhost:5000/rooms");
+      const fetched_rooms = await axios.get("https://study-buddy-hacks.herokuapp.com/rooms");
       setRooms(rooms => [...rooms, ...fetched_rooms.data])
     }
     get_rooms()

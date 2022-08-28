@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 
-const socket = io("http://localhost:5000");
+const socket = io("");
 
 function CreateRoomPage() {
     let navigate = useNavigate();
@@ -17,7 +17,7 @@ function CreateRoomPage() {
     const [subject, setSubject] = useState("");
     function create_room(e) {
         e.preventDefault();
-        axios.post("http://localhost:5000/create_room", { title, description, grade, subject })
+        axios.post("https://study-buddy-hacks.herokuapp.com/create_room", { title, description, grade, subject })
         socket.on("url_created", (url) => navigate(url))
     }
     return (

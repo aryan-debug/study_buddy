@@ -7,7 +7,7 @@ import { ArrowRightIcon } from "@chakra-ui/icons"
 import axios from "axios";
 
 
-const socket = io("http://localhost:5000");
+const socket = io("https://study-buddy-hacks.herokuapp.com");
 function Room() {
     const params = useParams()
     const navigate = useRef(useNavigate())
@@ -16,12 +16,12 @@ function Room() {
     const room_id = params.id;
 
     useEffect(() => {
-        axios.get(`http://localhost:5000/rooms/${room_id}`).catch(function (err) {
+        axios.get(`https://study-buddy-hacks.herokuapp.com/rooms/${room_id}`).catch(function (err) {
             if (err.response.status === 404) {
                 navigate("/")
             }
         })
-        axios.get(`http://localhost:5000/rooms/${room_id}/messages`).then(data => {
+        axios.get(`https://study-buddy-hacks.herokuapp.com/rooms/${room_id}/messages`).then(data => {
             setMessages(messages => [...messages, ...data.data.messages])
         })
     }, [room_id])
