@@ -66,7 +66,7 @@ app.post("/create_room", async (req, res, cb) => {
             return
         }
     })
-    io.sockets.emit("room created", { title, description, grade, subject, url: room._id })
+    io.sockets.emit("room created", { title, description, grade, subject, id: room._id })
     io.emit("url_created", `../rooms/${room.id}`)
 })
 
