@@ -4,7 +4,7 @@ const http = require('http');
 const cors = require("cors")
 const server = http.createServer(app);
 const { Server } = require("socket.io");
-const io = new Server(server, { cors: "http://localhost:3000" });
+const io = new Server(server, { cors: "https://harmonious-choux-39e014.netlify.app" });
 const mongoose = require('mongoose');
 const Room = require('./models/room');
 
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://harmonious-choux-39e014.netlify.app',
     credentials: true,
 }))
 
