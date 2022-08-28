@@ -12,9 +12,11 @@ import CreateRoomPage from './components/CreateRoomPage';
 import Room from './components/Room';
 
 
+localStorage.setItem("chakra-ui-color-mode", "dark")
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <ChakraProvider theme={theme}>
+  <ChakraProvider theme={theme} colorModeManager={localStorage}>
     <ColorModeProvider value='dark'>
       <BrowserRouter>
         <Routes>
