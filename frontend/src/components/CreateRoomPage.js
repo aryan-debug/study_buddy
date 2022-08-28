@@ -7,7 +7,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 
 
-const socket = io("");
+const socket = io("https://study-buddy-hacks.herokuapp.com");
 
 function CreateRoomPage() {
     let navigate = useNavigate();
