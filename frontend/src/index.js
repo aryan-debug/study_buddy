@@ -16,16 +16,14 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <ChakraProvider theme={theme}>
     <ColorModeScript initialColorMode={theme.config.initialColorMode}>
-      <ColorModeProvider value='dark'>
-        <BrowserRouter>
-          <Routes>
-            <Route path='/' element={<App />} />
-            <Route path='/create_room' element={<CreateRoomPage />} />
-            <Route path="/rooms/:id" element={<Room />} />
-            <Route path="*" element={<App />} />
-          </Routes>
-        </BrowserRouter>
-      </ColorModeProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<App />} />
+          <Route path='/create_room' element={<CreateRoomPage />} />
+          <Route path="/rooms/:id" element={<Room />} />
+          <Route path="*" element={<App />} />
+        </Routes>
+      </BrowserRouter>
     </ColorModeScript>
   </ChakraProvider>
 );
